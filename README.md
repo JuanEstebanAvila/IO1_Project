@@ -1,6 +1,6 @@
-# Método gráfico – Grupo 7 (IO1-82)
+# INTRUCCIONES
 
-Software del Proyecto Final de Investigación de Operaciones 1.
+Software de IO para problemas de PL.
 Resuelve cualquier PL de **2 variables** (maximizar o minimizar, restricciones
 ≤, ≥ y =, hasta 8 restricciones) con el **método gráfico**, programado desde cero
 (sin SciPy, PuLP ni OR-Tools dentro del software).
