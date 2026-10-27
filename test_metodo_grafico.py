@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 """
-Pruebas automáticas del método gráfico (ejecutar con:  pytest -q).
-Cada prueba carga un ejemplo de ejemplos.json y comprueba el estado y el
-óptimo esperado (los valores esperados se calcularon a mano).
+Pruebas automáticas del método gráfico
+Cada prueba carga un ejemplo de ejemplos.json y comprueba el estado y el óptimo esperado (los valores esperados se calcularon a mano).
 """
 import json
 import os

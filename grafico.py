@@ -1,11 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-grafico.py  --  Grupo 7 (IO1-82)
-
-Dibuja la gráfica del método gráfico: cada restricción como recta, la región
-factible sombreada, los vértices con su valor de z y el óptimo marcado.
-Solo dibuja; no resuelve nada (la solución viene de metodo_grafico.py).
-"""
+#Clase encargada de hacer la gráfica en el plano 
 from __future__ import annotations
 
 import numpy as np
@@ -15,7 +8,6 @@ from metodo_grafico import Problema, Resultado
 
 
 def _limites(p: Problema, res: Resultado):
-    """Tamaño de la ventana: abarca vértices e interceptos de las rectas."""
     xs, ys = [0.0], [0.0]
     for v in res.vertices:
         xs.append(v.x1)
@@ -37,7 +29,7 @@ def dibujar(p: Problema, res: Resultado) -> Figure:
     ax = fig.add_subplot(111)
     xmax, ymax = _limites(p, res)
 
-    # --- Región factible (sombreada) -------------------------------------
+    #Región factible (sombreada) 
     hay_igualdad = any(r.signo == "=" for r in p.restricciones)
     if not hay_igualdad:
         X, Y = np.meshgrid(np.linspace(0, xmax, 500), np.linspace(0, ymax, 500))
@@ -55,7 +47,7 @@ def dibujar(p: Problema, res: Resultado) -> Figure:
         ax.plot([q[0] for q in pts], [q[1] for q in pts], color="#2e9d5b",
                 linewidth=5, alpha=0.5, label="Región factible")
 
-    # --- Una recta por cada restricción ----------------------------------
+    #Una recta por cada restricción 
     colores = ["#1f77b4", "#d62728", "#9467bd", "#8c564b",
                "#e377c2", "#17becf", "#bcbd22", "#ff7f0e"]
     for i, r in enumerate(p.restricciones):
@@ -67,13 +59,13 @@ def dibujar(p: Problema, res: Resultado) -> Figure:
         else:
             ax.axvline(r.b / r.a1, color=color, label=etiqueta)
 
-    # --- Vértices con su valor de z --------------------------------------
+    #Vértices con su valor de z 
     for v in res.vertices:
         ax.plot(v.x1, v.x2, "o", color="black", markersize=5, zorder=5)
         ax.annotate(f"({v.x1:.3g}; {v.x2:.3g})\nz = {v.z:.4g}", (v.x1, v.x2),
                     textcoords="offset points", xytext=(6, 6), fontsize=8)
 
-    # --- Óptimo marcado y recta de z -------------------------------------
+    #Óptimo marcado y recta de z 
     for v in res.optimos:
         ax.plot(v.x1, v.x2, "*", color="gold", markeredgecolor="black",
                 markersize=18, zorder=6, label="Óptimo" if v is res.optimos[0] else None)
