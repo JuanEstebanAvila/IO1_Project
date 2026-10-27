@@ -1,0 +1,74 @@
+{
+  "Caso real: granja avícola (mezcla de alimento)": {
+    "objetivo": "min",
+    "c1": "2560", "c2": "1950",
+    "nombre_x1": "Maíz", "unidad_x1": "kg/día",
+    "nombre_x2": "Concentrado Purina", "unidad_x2": "kg/día",
+    "unidad_z": "$/día",
+    "restricciones": [
+      {"nombre": "Proteína mínima", "a1": "0.085", "a2": "0.17", "signo": ">=", "b": "0.48"},
+      {"nombre": "Maíz al menos 20% de la mezcla", "a1": "4", "a2": "-1", "signo": ">=", "b": "0"},
+      {"nombre": "Cantidad mínima de alimento", "a1": "1", "a2": "1", "signo": ">=", "b": "2.5"},
+      {"nombre": "Capacidad de consumo", "a1": "1", "a2": "1", "signo": "<=", "b": "3.5"}
+    ]
+  },
+  "Prueba 1: maximizar utilidad (taller)": {
+    "objetivo": "max",
+    "c1": "40", "c2": "30",
+    "nombre_x1": "Producto A", "unidad_x1": "unidades",
+    "nombre_x2": "Producto B", "unidad_x2": "unidades",
+    "unidad_z": "$",
+    "restricciones": [
+      {"nombre": "Horas de máquina", "a1": "1", "a2": "1", "signo": "<=", "b": "12"},
+      {"nombre": "Materia prima", "a1": "2", "a2": "1", "signo": "<=", "b": "16"},
+      {"nombre": "Demanda máxima A", "a1": "1", "a2": "0", "signo": "<=", "b": "7"},
+      {"nombre": "Demanda máxima B", "a1": "0", "a2": "1", "signo": "<=", "b": "9"}
+    ]
+  },
+  "Prueba 2: INFACTIBLE": {
+    "objetivo": "min",
+    "c1": "1", "c2": "1",
+    "nombre_x1": "x1", "unidad_x1": "",
+    "nombre_x2": "x2", "unidad_x2": "",
+    "unidad_z": "",
+    "restricciones": [
+      {"nombre": "Mínimo total", "a1": "1", "a2": "1", "signo": ">=", "b": "10"},
+      {"nombre": "Máximo total", "a1": "1", "a2": "1", "signo": "<=", "b": "5"}
+    ]
+  },
+  "Prueba 3: NO ACOTADO": {
+    "objetivo": "max",
+    "c1": "1", "c2": "1",
+    "nombre_x1": "x1", "unidad_x1": "",
+    "nombre_x2": "x2", "unidad_x2": "",
+    "unidad_z": "",
+    "restricciones": [
+      {"nombre": "R1", "a1": "1", "a2": "-1", "signo": "<=", "b": "2"},
+      {"nombre": "R2", "a1": "1", "a2": "0", "signo": ">=", "b": "1"}
+    ]
+  },
+  "Prueba 4: ÓPTIMOS ALTERNATIVOS": {
+    "objetivo": "max",
+    "c1": "2", "c2": "4",
+    "nombre_x1": "x1", "unidad_x1": "",
+    "nombre_x2": "x2", "unidad_x2": "",
+    "unidad_z": "",
+    "restricciones": [
+      {"nombre": "R1", "a1": "1", "a2": "2", "signo": "<=", "b": "8"},
+      {"nombre": "R2", "a1": "1", "a2": "0", "signo": "<=", "b": "6"},
+      {"nombre": "R3", "a1": "0", "a2": "1", "signo": "<=", "b": "3"}
+    ]
+  },
+  "Prueba 5: con restricción de igualdad": {
+    "objetivo": "min",
+    "c1": "3", "c2": "2",
+    "nombre_x1": "x1", "unidad_x1": "",
+    "nombre_x2": "x2", "unidad_x2": "",
+    "unidad_z": "",
+    "restricciones": [
+      {"nombre": "Igualdad", "a1": "1", "a2": "1", "signo": "=", "b": "10"},
+      {"nombre": "Mínimo x1", "a1": "1", "a2": "0", "signo": ">=", "b": "2"},
+      {"nombre": "Máximo x2", "a1": "0", "a2": "1", "signo": "<=", "b": "7"}
+    ]
+  }
+}
